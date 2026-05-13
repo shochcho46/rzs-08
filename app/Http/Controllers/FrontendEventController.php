@@ -136,7 +136,6 @@ class FrontendEventController extends Controller
 
         // Store guests if provided
 
-         dd($message);
         // Send SMS notification (non-blocking)
         try {
             Http::asForm()->post('https://api.bdbulksms.net/api.php?json', [
