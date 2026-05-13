@@ -110,9 +110,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($eventDetails as $detail)
+                                    @forelse($eventDetails as $loop_index => $detail)
                                     <tr>
-                                        <td>{{ $detail->id }}</td>
+                                        <td>{{ $loop_index + 1 }}</td>
                                         <td>{{ $detail->event->title }}</td>
                                         <td>{{ $detail->name }}</td>
                                         <td>{{ $detail->mobile }}</td>
