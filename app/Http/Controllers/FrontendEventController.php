@@ -137,16 +137,16 @@ class FrontendEventController extends Controller
         // Store guests if provided
 
         // Send SMS notification (non-blocking)
-        // try {
-        //     Http::asForm()->post('https://api.bdbulksms.net/api.php?json', [
-        //         'to' => $eventDetail->mobile,
-        //         'message' => $message,
-        //         'token' => 'c3253885b10f98c971b719b5372a4b34'
-        //     ]);
-        // } catch (\Exception $e) {
-        //     // Log error but don't halt registration process
-        //     Log::error('SMS sending failed: ' . $e->getMessage());
-        // }
+        try {
+            Http::asForm()->post('https://api.bdbulksms.net/api.php?json', [
+                'to' => $eventDetail->mobile,
+                'message' => $message,
+                'token' => 'c3253885b10f98c971b719b5372a4b34'
+            ]);
+        } catch (\Exception $e) {
+            // Log error but don't halt registration process
+            Log::error('SMS sending failed: ' . $e->getMessage());
+        }
 
 
 
