@@ -76,7 +76,7 @@ class FrontendEventController extends Controller
             ],
             'jersey_name' => 'required|string|max:255',
             'jersey_number' => 'required|string|max:50',
-            'size' => 'required|in:SM,M,L,XL,XXL,custom',
+            'size' => 'required|in:SM,M,L,XL,XXL,XXXL,custom',
             'custom_width' => 'nullable|required_if:size,custom|string',
             'custom_height' => 'nullable|required_if:size,custom|string',
             'sleeve_type' => 'required|in:half_sleeve,full_sleeve',
@@ -87,7 +87,7 @@ class FrontendEventController extends Controller
             'guests.*.name' => 'required_with:guests|string|max:255',
             'guests.*.jersey_name' => 'required_with:guests|string|max:255',
             'guests.*.jersey_number' => 'required_with:guests|string|max:50',
-            'guests.*.size' => 'required_with:guests|in:SM,M,L,XL,XXL,custom',
+            'guests.*.size' => 'required_with:guests|in:SM,M,L,XL,XXL,XXXL,custom',
             'guests.*.custom_width' => 'nullable|required_if:guests.*.size,custom|string',
             'guests.*.custom_height' => 'nullable|required_if:guests.*.size,custom|string',
             'guests.*.sleeve_type' => 'required_with:guests|in:half_sleeve,full_sleeve',
@@ -137,16 +137,16 @@ class FrontendEventController extends Controller
         // Store guests if provided
 
         // Send SMS notification (non-blocking)
-        try {
-            Http::asForm()->post('https://api.bdbulksms.net/api.php?json', [
-                'to' => $eventDetail->mobile,
-                'message' => $message,
-                'token' => 'c3253885b10f98c971b719b5372a4b34'
-            ]);
-        } catch (\Exception $e) {
-            // Log error but don't halt registration process
-            Log::error('SMS sending failed: ' . $e->getMessage());
-        }
+        // try {
+        //     Http::asForm()->post('https://api.bdbulksms.net/api.php?json', [
+        //         'to' => $eventDetail->mobile,
+        //         'message' => $message,
+        //         'token' => 'c3253885b10f98c971b719b5372a4b34'
+        //     ]);
+        // } catch (\Exception $e) {
+        //     // Log error but don't halt registration process
+        //     Log::error('SMS sending failed: ' . $e->getMessage());
+        // }
 
 
 
